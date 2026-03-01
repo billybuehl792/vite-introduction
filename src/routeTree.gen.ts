@@ -8,159 +8,74 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrivateIndexRouteImport } from './routes/private/index'
+import { Route as PostsIndexRouteImport } from './routes/posts/index'
+import { Route as CustomersIndexRouteImport } from './routes/customers/index'
+import { Route as AnotherIndexRouteImport } from './routes/another/index'
+import { Route as AboutIndexRouteImport } from './routes/about/index'
+import { Route as PostsIdRouteImport } from './routes/posts/$id'
+import { Route as CustomersCreateRouteImport } from './routes/customers/create'
+import { Route as CustomersIdRouteImport } from './routes/customers/$id'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as PrivateIndexImport } from './routes/private/index'
-import { Route as PostsIndexImport } from './routes/posts/index'
-import { Route as CustomersIndexImport } from './routes/customers/index'
-import { Route as AnotherIndexImport } from './routes/another/index'
-import { Route as AboutIndexImport } from './routes/about/index'
-import { Route as PostsIdImport } from './routes/posts/$id'
-import { Route as CustomersCreateImport } from './routes/customers/create'
-import { Route as CustomersIdImport } from './routes/customers/$id'
-
-// Create/Update Routes
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const PrivateIndexRoute = PrivateIndexImport.update({
+const PrivateIndexRoute = PrivateIndexRouteImport.update({
   id: '/private/',
   path: '/private/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const PostsIndexRoute = PostsIndexImport.update({
+const PostsIndexRoute = PostsIndexRouteImport.update({
   id: '/posts/',
   path: '/posts/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const CustomersIndexRoute = CustomersIndexImport.update({
+const CustomersIndexRoute = CustomersIndexRouteImport.update({
   id: '/customers/',
   path: '/customers/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AnotherIndexRoute = AnotherIndexImport.update({
+const AnotherIndexRoute = AnotherIndexRouteImport.update({
   id: '/another/',
   path: '/another/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AboutIndexRoute = AboutIndexImport.update({
+const AboutIndexRoute = AboutIndexRouteImport.update({
   id: '/about/',
   path: '/about/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const PostsIdRoute = PostsIdImport.update({
+const PostsIdRoute = PostsIdRouteImport.update({
   id: '/posts/$id',
   path: '/posts/$id',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const CustomersCreateRoute = CustomersCreateImport.update({
+const CustomersCreateRoute = CustomersCreateRouteImport.update({
   id: '/customers/create',
   path: '/customers/create',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const CustomersIdRoute = CustomersIdImport.update({
+const CustomersIdRoute = CustomersIdRouteImport.update({
   id: '/customers/$id',
   path: '/customers/$id',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/customers/$id': {
-      id: '/customers/$id'
-      path: '/customers/$id'
-      fullPath: '/customers/$id'
-      preLoaderRoute: typeof CustomersIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/customers/create': {
-      id: '/customers/create'
-      path: '/customers/create'
-      fullPath: '/customers/create'
-      preLoaderRoute: typeof CustomersCreateImport
-      parentRoute: typeof rootRoute
-    }
-    '/posts/$id': {
-      id: '/posts/$id'
-      path: '/posts/$id'
-      fullPath: '/posts/$id'
-      preLoaderRoute: typeof PostsIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/about/': {
-      id: '/about/'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/another/': {
-      id: '/another/'
-      path: '/another'
-      fullPath: '/another'
-      preLoaderRoute: typeof AnotherIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/customers/': {
-      id: '/customers/'
-      path: '/customers'
-      fullPath: '/customers'
-      preLoaderRoute: typeof CustomersIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/posts/': {
-      id: '/posts/'
-      path: '/posts'
-      fullPath: '/posts'
-      preLoaderRoute: typeof PostsIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/private/': {
-      id: '/private/'
-      path: '/private'
-      fullPath: '/private'
-      preLoaderRoute: typeof PrivateIndexImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/customers/$id': typeof CustomersIdRoute
   '/customers/create': typeof CustomersCreateRoute
   '/posts/$id': typeof PostsIdRoute
-  '/about': typeof AboutIndexRoute
-  '/another': typeof AnotherIndexRoute
-  '/customers': typeof CustomersIndexRoute
-  '/posts': typeof PostsIndexRoute
-  '/private': typeof PrivateIndexRoute
+  '/about/': typeof AboutIndexRoute
+  '/another/': typeof AnotherIndexRoute
+  '/customers/': typeof CustomersIndexRoute
+  '/posts/': typeof PostsIndexRoute
+  '/private/': typeof PrivateIndexRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/customers/$id': typeof CustomersIdRoute
@@ -172,9 +87,8 @@ export interface FileRoutesByTo {
   '/posts': typeof PostsIndexRoute
   '/private': typeof PrivateIndexRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/customers/$id': typeof CustomersIdRoute
   '/customers/create': typeof CustomersCreateRoute
@@ -185,7 +99,6 @@ export interface FileRoutesById {
   '/posts/': typeof PostsIndexRoute
   '/private/': typeof PrivateIndexRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
@@ -193,11 +106,11 @@ export interface FileRouteTypes {
     | '/customers/$id'
     | '/customers/create'
     | '/posts/$id'
-    | '/about'
-    | '/another'
-    | '/customers'
-    | '/posts'
-    | '/private'
+    | '/about/'
+    | '/another/'
+    | '/customers/'
+    | '/posts/'
+    | '/private/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -222,7 +135,6 @@ export interface FileRouteTypes {
     | '/private/'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CustomersIdRoute: typeof CustomersIdRoute
@@ -233,6 +145,74 @@ export interface RootRouteChildren {
   CustomersIndexRoute: typeof CustomersIndexRoute
   PostsIndexRoute: typeof PostsIndexRoute
   PrivateIndexRoute: typeof PrivateIndexRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private/': {
+      id: '/private/'
+      path: '/private'
+      fullPath: '/private/'
+      preLoaderRoute: typeof PrivateIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts/': {
+      id: '/posts/'
+      path: '/posts'
+      fullPath: '/posts/'
+      preLoaderRoute: typeof PostsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers/': {
+      id: '/customers/'
+      path: '/customers'
+      fullPath: '/customers/'
+      preLoaderRoute: typeof CustomersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/another/': {
+      id: '/another/'
+      path: '/another'
+      fullPath: '/another/'
+      preLoaderRoute: typeof AnotherIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts/$id': {
+      id: '/posts/$id'
+      path: '/posts/$id'
+      fullPath: '/posts/$id'
+      preLoaderRoute: typeof PostsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers/create': {
+      id: '/customers/create'
+      path: '/customers/create'
+      fullPath: '/customers/create'
+      preLoaderRoute: typeof CustomersCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers/$id': {
+      id: '/customers/$id'
+      path: '/customers/$id'
+      fullPath: '/customers/$id'
+      preLoaderRoute: typeof CustomersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -246,55 +226,6 @@ const rootRouteChildren: RootRouteChildren = {
   PostsIndexRoute: PostsIndexRoute,
   PrivateIndexRoute: PrivateIndexRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/customers/$id",
-        "/customers/create",
-        "/posts/$id",
-        "/about/",
-        "/another/",
-        "/customers/",
-        "/posts/",
-        "/private/"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/customers/$id": {
-      "filePath": "customers/$id.tsx"
-    },
-    "/customers/create": {
-      "filePath": "customers/create.tsx"
-    },
-    "/posts/$id": {
-      "filePath": "posts/$id.tsx"
-    },
-    "/about/": {
-      "filePath": "about/index.tsx"
-    },
-    "/another/": {
-      "filePath": "another/index.tsx"
-    },
-    "/customers/": {
-      "filePath": "customers/index.tsx"
-    },
-    "/posts/": {
-      "filePath": "posts/index.tsx"
-    },
-    "/private/": {
-      "filePath": "private/index.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
